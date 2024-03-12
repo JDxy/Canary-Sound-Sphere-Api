@@ -48,7 +48,7 @@ db.admins.insertMany([
     "password": "1234"   
   },
   {
-    "_id_admin": "ad02",
+    "_id": "ad02",
     "name": "Ana",
     "password": "12345"   
   }
