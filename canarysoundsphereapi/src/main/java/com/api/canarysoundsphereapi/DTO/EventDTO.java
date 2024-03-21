@@ -1,11 +1,9 @@
-package com.api.canarysoundsphereapi.model;
+package com.api.canarysoundsphereapi.DTO;
 
-import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.Data;
 
 @Data
-@Document(collection = "events")
-public class Event {
+public class EventDTO {
     private String _id;
     private String logo;
     private String image;
@@ -18,3 +16,4 @@ public class Event {
     private String marker;
     private String ticket_store;
 }
+

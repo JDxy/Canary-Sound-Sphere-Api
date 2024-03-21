@@ -14,4 +14,5 @@ public interface EventRepository extends MongoRepository<Event, String> {
      */
     public abstract ArrayList<Event> findAll();
     public abstract Optional<Event> findById(String id);
+    public abstract Event save(Event event);
 }

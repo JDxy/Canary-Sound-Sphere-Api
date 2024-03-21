@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.api.canarysoundsphereapi.DTO.EventDTO;
 import com.api.canarysoundsphereapi.model.Event;
 import com.api.canarysoundsphereapi.repositories.EventRepository;
 
@@ -30,4 +32,19 @@ public class EventService {
         return eventRepository.findById(id);
     }
 
+    public void postRegisterEvent(EventDTO eventDTO) {
+        Event event = new Event();
+            event.set_id(eventDTO.get_id());
+            event.setLogo(eventDTO.getLogo());
+            event.setImage(eventDTO.getImage());
+            event.setName(eventDTO.getName());
+            event.setDate(eventDTO.getDate());
+            event.setTime(eventDTO.getTime());
+            event.setCapacity(eventDTO.getCapacity());
+            event.setDescription(eventDTO.getDescription());
+            event.setDirection(eventDTO.getDirection());
+            event.setMarker(eventDTO.getMarker());
+            event.setTicket_store(eventDTO.getTicket_store());
+            eventRepository.save(event);      
+    }
 }

@@ -6,8 +6,12 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.api.canarysoundsphereapi.DTO.EventDTO;
 import com.api.canarysoundsphereapi.model.Event;
 import com.api.canarysoundsphereapi.services.EventService;
 
@@ -35,6 +39,11 @@ public class EventControlller {
     @GetMapping("/{id}")
     public Optional<Event> findById(@PathVariable("id") String id) {
         return eventService.findById(id);
+    }
+
+    @PostMapping("/addevent")
+    public void postRegisterEvent(@RequestBody EventDTO event) {     
+        eventService.postRegisterEvent(event);
     }
     
 }
