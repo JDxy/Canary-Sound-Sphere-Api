@@ -1,6 +1,7 @@
 package com.api.canarysoundsphereapi.services;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,10 @@ public class EventService {
      */
     public ArrayList<Event> getAllEvents() {
         return eventRepository.findAll();
+    }
+
+    public Optional<Event> findById(String id) {
+        return eventRepository.findById(id);
     }
 
 }
