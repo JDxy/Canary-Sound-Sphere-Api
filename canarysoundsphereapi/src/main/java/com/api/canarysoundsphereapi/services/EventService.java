@@ -32,7 +32,7 @@ public class EventService {
         return eventRepository.findById(id);
     }
 
-    public void postRegisterEvent(EventDTO eventDTO) {
+    public void postRegister(EventDTO eventDTO) {
         Event event = new Event();
             event.set_id(eventDTO.get_id());
             event.setLogo(eventDTO.getLogo());
@@ -46,5 +46,17 @@ public class EventService {
             event.setMarker(eventDTO.getMarker());
             event.setTicket_store(eventDTO.getTicket_store());
             eventRepository.save(event);      
+    }
+
+    public void delete(String id){
+        eventRepository.deleteById(id);
+    }
+
+    public void modify(String id, EventDTO eventDTO) {
+        Event event = eventRepository.findByCode(id);
+        if (event != null) {
+            event.setLogo(eventDTO.getLogo());
+            eventRepository.save(event);
+        } 
     }
 }
