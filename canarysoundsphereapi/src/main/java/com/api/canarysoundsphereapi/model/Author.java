@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @Document(collection = "authors")
 public class Author {
-    private String id;
+    private String _id;
     private String name;
     private String image;
     private int foundation_year;

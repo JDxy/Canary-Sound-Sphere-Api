@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.api.canarysoundsphereapi.model.Author;
+import com.api.canarysoundsphereapi.model.Event;
 import com.api.canarysoundsphereapi.repositories.AuthorRepository;
 
 /**
@@ -31,4 +32,47 @@ public class AuthorService {
         return authorRepository.findById(id);
     }
 
+    /**
+     * Se utiliza para registrar un nuevo author
+     * 
+     * @param author
+     */
+    public void postAuthor(Author author) {
+        authorRepository.save(author);
+    }
+
+    /**
+     * Elimina un author por su id
+     * 
+     * @param id
+     */
+    public void deleteAuthor(String id) {
+        authorRepository.deleteById(id);
+    }
+
+    /**
+     * Actualiza un author existente.
+     * 
+     * @param id
+     * @param updatedAuthor
+     */
+    public void updateAuthor(String id, Author updatedAuthor) {
+        Optional<Author> existingAuthor = authorRepository.findById(id);
+        if (existingAuthor.isPresent()) { // Verifica si el evento existe
+            Author authorToUpdate = existingAuthor.get();
+            // Actualiza los campos del author existente con los datos del author
+            // actualizado
+            authorToUpdate.setName(updatedAuthor.getName());
+            authorToUpdate.setImage(updatedAuthor.getImage());
+            authorToUpdate.setFoundation_year(updatedAuthor.getFoundation_year());
+            authorToUpdate.setMusic_type(updatedAuthor.getMusic_type());
+            authorToUpdate.setDescription(updatedAuthor.getDescription());
+            authorToUpdate.setMusic_list(updatedAuthor.getMusic_list());
+            // Guarda el author actualizado en la base de datos
+            authorRepository.save(authorToUpdate);
+        } else {
+            // Manejo de error si el author no se encuentra
+            throw new RuntimeException("No se encontró ningún author con el ID proporcionado: " + id);
+        }
+    }
 }

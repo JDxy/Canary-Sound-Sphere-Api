@@ -46,7 +46,7 @@ public class EventControlller {
         return eventService.findById(id);
     }
 
-    @PostMapping("addEvent")
+    @PostMapping("add_event")
     /**
      * Método para registrar un nuevo viaje.
      * 
