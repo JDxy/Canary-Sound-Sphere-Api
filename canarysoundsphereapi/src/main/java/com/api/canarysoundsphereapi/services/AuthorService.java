@@ -7,11 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.api.canarysoundsphereapi.model.Author;
-import com.api.canarysoundsphereapi.model.Event;
 import com.api.canarysoundsphereapi.repositories.AuthorRepository;
 
 /**
- * Clase que proporciona servicios relacionados con los eventos.
+ * Clase que proporciona servicios relacionados con los authors.
  */
 @Service
 public class AuthorService {
@@ -20,9 +19,9 @@ public class AuthorService {
     private AuthorRepository authorRepository;
 
     /**
-     * Se utiliza para listar eventos.
+     * Se utiliza para listar authors.
      * 
-     * @return Devuelve una lista de todos los eventos.
+     * @return Devuelve una lista de todos los authors.
      */
     public ArrayList<Author> findAll() {
         return authorRepository.findAll();

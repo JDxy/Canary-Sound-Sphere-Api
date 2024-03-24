@@ -5,8 +5,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.api.canarysoundsphereapi.DTO.EventDTO;
 import com.api.canarysoundsphereapi.model.Event;
 import com.api.canarysoundsphereapi.repositories.EventRepository;
 
@@ -28,35 +26,62 @@ public class EventService {
         return eventRepository.findAll();
     }
 
+    /**
+     * Encuentra un evento por su id
+     * 
+     * @param id
+     * @return
+     */
     public Optional<Event> findById(String id) {
         return eventRepository.findById(id);
     }
 
-    public void postRegister(EventDTO eventDTO) {
-        Event event = new Event();
-            event.set_id(eventDTO.get_id());
-            event.setLogo(eventDTO.getLogo());
-            event.setImage(eventDTO.getImage());
-            event.setName(eventDTO.getName());
-            event.setDate(eventDTO.getDate());
-            event.setTime(eventDTO.getTime());
-            event.setCapacity(eventDTO.getCapacity());
-            event.setDescription(eventDTO.getDescription());
-            event.setDirection(eventDTO.getDirection());
-            event.setMarker(eventDTO.getMarker());
-            event.setTicket_store(eventDTO.getTicket_store());
-            eventRepository.save(event);      
+    /**
+     * Se utiliza para registrar un nuevo event
+     * 
+     * @param event
+     */
+    public void postEvent(Event event) {
+        eventRepository.save(event);
     }
 
-    public void delete(String id){
+    /**
+     * Elimina un event por su id
+     * 
+     * @param id
+     */
+    public void deleteEvent(String id) {
         eventRepository.deleteById(id);
     }
 
-    public void modify(String id, EventDTO eventDTO) {
-        Event event = eventRepository.findByCode(id);
-        if (event != null) {
-            event.setLogo(eventDTO.getLogo());
-            eventRepository.save(event);
-        } 
+    /**
+     * Actualiza un evento existente.
+     * 
+     * @param id
+     * @param updatedEvent
+     */
+    public void updateEvent(String id, Event updatedEvent) {
+        Optional<Event> existingEvent = eventRepository.findById(id);
+        if (existingEvent.isPresent()) { // Verifica si el evento existe
+            Event eventToUpdate = existingEvent.get();
+            // Actualiza los campos del evento existente con los datos del evento
+            // actualizado
+            eventToUpdate.setLogo(updatedEvent.getLogo());
+            eventToUpdate.setImage(updatedEvent.getImage());
+            eventToUpdate.setName(updatedEvent.getName());
+            eventToUpdate.setDate(updatedEvent.getDate());
+            eventToUpdate.setTime(updatedEvent.getTime());
+            eventToUpdate.setCapacity(updatedEvent.getCapacity());
+            eventToUpdate.setDescription(updatedEvent.getDescription());
+            eventToUpdate.setDirection(updatedEvent.getDirection());
+            eventToUpdate.setMarker(updatedEvent.getMarker());
+            eventToUpdate.setTicket_store(updatedEvent.getTicket_store());
+            // Guarda el evento actualizado en la base de datos
+            eventRepository.save(eventToUpdate);
+        } else {
+            // Manejo de error si el evento no se encuentra
+            throw new RuntimeException("No se encontró ningún evento con el ID proporcionado: " + id);
+        }
     }
+
 }

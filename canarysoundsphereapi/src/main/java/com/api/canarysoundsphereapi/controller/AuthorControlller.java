@@ -10,13 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.api.canarysoundsphereapi.model.Author;
-import com.api.canarysoundsphereapi.model.Event;
 import com.api.canarysoundsphereapi.services.AuthorService;
-import com.api.canarysoundsphereapi.services.EventService;
-
 
 /**
- * Controlador para la gestión de eventos.
+ * Controlador para la gestión de authors
  */
 @RestController
 @RequestMapping("/authors")
@@ -26,11 +23,11 @@ public class AuthorControlller {
     private AuthorService authorService;
 
     /**
-     * Se utiliza para listar eventos.
+     * Se utiliza para listar authors.
      * 
-     * @return Devuelve una lista de todos los eventos.
+     * @return Devuelve una lista de todos los authors.
      */
-    @GetMapping("/")
+    @GetMapping()
     public ArrayList<Author> findAll() {
         return authorService.findAll();
     }
@@ -39,5 +36,5 @@ public class AuthorControlller {
     public Optional<Author> findById(@PathVariable("id") String id) {
         return authorService.findById(id);
     }
-    
+
 }

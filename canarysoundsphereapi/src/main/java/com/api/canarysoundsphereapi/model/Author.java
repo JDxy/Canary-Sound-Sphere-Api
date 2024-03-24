@@ -1,6 +1,5 @@
 package com.api.canarysoundsphereapi.model;
 
-
 import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.Data;
 
@@ -10,8 +9,8 @@ public class Author {
     private String id;
     private String name;
     private String image;
-    private int foundation_Year;
-    private String music_Type;
+    private int foundation_year;
+    private String music_type;
     private String description;
-    private String music_List;
+    private String music_list;
 }
