@@ -5,9 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.api.canarysoundsphereapi.model.Author;
-import com.api.canarysoundsphereapi.model.Event;
 import com.api.canarysoundsphereapi.repositories.AuthorRepository;
 
 /**
@@ -58,7 +56,7 @@ public class AuthorService {
      */
     public void updateAuthor(String id, Author updatedAuthor) {
         Optional<Author> existingAuthor = authorRepository.findById(id);
-        if (existingAuthor.isPresent()) { // Verifica si el evento existe
+        if (existingAuthor.isPresent()) { // Verifica si el author existe
             Author authorToUpdate = existingAuthor.get();
             // Actualiza los campos del author existente con los datos del author
             // actualizado
