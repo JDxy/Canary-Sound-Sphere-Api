@@ -63,18 +63,37 @@ public class EventService {
         Optional<Event> existingEvent = eventRepository.findById(id);
         if (existingEvent.isPresent()) { // Verifica si el evento existe
             Event eventToUpdate = existingEvent.get();
-            // Actualiza los campos del evento existente con los datos del evento
-            // actualizado
-            eventToUpdate.setLogo(updatedEvent.getLogo());
-            eventToUpdate.setImage(updatedEvent.getImage());
-            eventToUpdate.setName(updatedEvent.getName());
-            eventToUpdate.setDate(updatedEvent.getDate());
-            eventToUpdate.setTime(updatedEvent.getTime());
-            eventToUpdate.setCapacity(updatedEvent.getCapacity());
-            eventToUpdate.setDescription(updatedEvent.getDescription());
-            eventToUpdate.setDirection(updatedEvent.getDirection());
-            eventToUpdate.setMarker(updatedEvent.getMarker());
-            eventToUpdate.setTicket_store(updatedEvent.getTicket_store());
+            // Verifica y actualiza los campos del evento existente con los datos del evento actualizado
+            if (updatedEvent.getLogo() != null) {
+                eventToUpdate.setLogo(updatedEvent.getLogo());
+            }
+            if (updatedEvent.getImage() != null) {
+                eventToUpdate.setImage(updatedEvent.getImage());
+            }
+            if (updatedEvent.getName() != null) {
+                eventToUpdate.setName(updatedEvent.getName());
+            }
+            if (updatedEvent.getDate() != null) {
+                eventToUpdate.setDate(updatedEvent.getDate());
+            }
+            if (updatedEvent.getTime() != null) {
+                eventToUpdate.setTime(updatedEvent.getTime());
+            }
+            if (updatedEvent.getCapacity() != 0) {
+                eventToUpdate.setCapacity(updatedEvent.getCapacity());
+            }
+            if (updatedEvent.getDescription() != null) {
+                eventToUpdate.setDescription(updatedEvent.getDescription());
+            }
+            if (updatedEvent.getDirection() != null) {
+                eventToUpdate.setDirection(updatedEvent.getDirection());
+            }
+            if (updatedEvent.getMarker() != null) {
+                eventToUpdate.setMarker(updatedEvent.getMarker());
+            }
+            if (updatedEvent.getTicket_store() != null) {
+                eventToUpdate.setTicket_store(updatedEvent.getTicket_store());
+            }
             // Guarda el evento actualizado en la base de datos
             eventRepository.save(eventToUpdate);
         } else {
@@ -82,5 +101,6 @@ public class EventService {
             throw new RuntimeException("No se encontró ningún evento con el ID proporcionado: " + id);
         }
     }
+    
 
 }

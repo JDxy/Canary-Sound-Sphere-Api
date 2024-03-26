@@ -76,4 +76,6 @@ public class EventControlller {
     public void updateEvent(@PathVariable("id") String id, @RequestBody Event event) {
         eventService.updateEvent(id, event);
     }
+
+
 }
