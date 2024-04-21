@@ -5,8 +5,8 @@ use CanarySoundSphere
 db.createCollection("events")
 
 // Inserción de datos en la colección "events"
-db.events.insertOne([
-   {
+db.events.insertMany([  
+  {
     "_id": "0001",
     "logo": "grancalivefestUrlImage",
     "image": "grancalivefestUrlImage2",
@@ -14,10 +14,36 @@ db.events.insertOne([
     "date": "4, 5 y 6 de Julio",
     "time": "15:00 23:00",
     "capacity": 10000,
-    "description": "DÍA 4: Robbie Williams, Pedro Capó y Pedro Pastor. DÍA 5: Black Eyed Peas, Mora, Juanes, Melendi, Álvaro de Luna y Nia. DÍA 6: Maná, Estopa, Jhayco, Christian Nodal, Cruz Cafuné y Kany García.",
+    "description": "Día 4: Robbie Williams, Pedro Capó y Pedro Pastor. Día 5: Black Eyed Peas, Mora, Juanes, Melendi, Álvaro de Luna y Nia. Día 6: Maná, Estopa, Jhayco, Christian Nodal, Cruz Cafuné y Kany García.",
     "direction": "c/ Fondos de Segura, s/n 35019, Las Palmas de Gran Canaria, Las Palmas",
-    "marker":"28.103098034773886, -15.456542751641871",
+    "marker": "28.103098034773886, -15.456542751641871",
     "ticket_store": "https://gclivefest.es/es-es/entradas"
+  },
+  {
+    "_id": "0002",
+    "logo": "TenerifeMusicFestivalUrlImage",
+    "image": "TenerifeMusicFestivalUrlImage2",
+    "name": "Tenerife Music Festival 2024",
+    "date": "8 y 9 de Junio",
+    "time": "15:00 23:00",
+    "capacity": 10000,
+    "description": "Día 8: Marc Anthony, Efecto Pasillo, St. Pedro y Real el Canario. Día 9: Mikel Izal, La Oreja de Van Gogh, Rozalén, Delaporte, Vetusta Morla. ¡Más artistas por confirmar!",
+    "direction": "Dársena de los Llanos, Marina Santa Cruz, 38001 · Santa Cruz de Tenerife",
+    "marker": "28,466812, -16,245360",
+    "ticket_store": "https://tenerifemusicfestival.es/"
+  },
+  {
+    "_id": "0003",
+    "logo": "fiestoronUrlImage",
+    "image": "fiestoronUrlImage2",
+    "name": "Fiestoron 2024. 7º edición", 
+    "date": "9 y 10 de Agosto",
+    "time": "18:00 horas", 
+    "capacity": 8000,
+    "description": "Día 9: Sober + Savia + Skizoo, Reincidentes, Celtas Cortos, Mojinos Escozíos, La Cabra Mecánica. Día 10: Efecto Pasillo, La Pegatina, Pignoise, Nena Daconte, Café Quijano.",
+    "direction": "Ctra. del Lomo, S/N, 35400 Arucas, Las Palmas",
+    "marker": "28.117877419165055, -15.5223557644181",
+    "ticket_store": "https://fiestoron.com/"
   }
 ])
 
